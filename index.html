@@ -1,45 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoiceFixer 2</title>
     <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Libre+Franklin:ital,wght@0,300;0,600;1,300;1,600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Libre+Franklin:ital,wght@0,300;0,600;1,300;1,600&display=swap');
         * {
             font-family: 'Libre Franklin', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             box-sizing: border-box;
         }
+
         html {
             margin: 0;
             padding: 0;
         }
+
         body {
             margin: 0;
             padding: 0;
         }
+
         *::selection {
             background: #00599F;
             color: white;
         }
+
         .header {
             background: #00599F;
             color: white;
             padding: 25px 35px;
             text-align: center;
         }
-        .header *::selection {
+
+        .header h1 {
+            font-size: 35pt;
+        }
+
+        .header h2 {
+            font-size: 20pt;
+        }
+
+        .header *::selection,
+        .samples *::selection {
             color: #00599F;
             background: white;
         }
-        .main, .faqs {
+
+        .main,
+        .faqs {
             padding: 25px 35px;
         }
+
+        .main {
+            text-align: center;
+        }
+
         .samples {
             padding: 25px 35px;
             background: #0059B1;
             color: white;
         }
+
         .button {
             transition: 0.125s;
             background: white;
@@ -49,6 +72,7 @@
             padding: 10px 15px;
             border-radius: 5px;
         }
+
         .install {
             font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
             background: #353535;
@@ -58,37 +82,94 @@
             cursor: pointer;
             transition: 0.125s;
         }
+
         .i {
             font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
         }
+
         .i::selection {
             background: #00599F;
             color: white;
         }
-        .install:hover, .button:hover {
+
+        .install:hover,
+        .button:hover {
             transform: scale(1.05);
         }
-        .install:active, .button:active {
+
+        .install:active,
+        .button:active {
             transform: scale(0.95);
         }
+
         .footer {
             background: #003762;
             padding: 10px 25px;
             text-align: center;
             color: white;
         }
+
         a {
             color: #00599F;
         }
-        .samples a, .footer a {
+
+        .samples a,
+        .footer a {
             color: white;
+        }
+
+        .samplebox {
+            background: #0069D1;
+            border-radius: 15px;
+            padding: 10px 25px;
+            margin: 10px 0;
+        }
+
+        .samplebox p {
+            margin: 10px 0;
+            padding: 0;
+            font-size: 10pt;
+        }
+
+        audio {
+            width: 100%;
+            height: 35px;
+        }
+
+        .columns>div {
+            border-radius: 15px;
+            margin: 1rem;
+            padding: 1rem;
+        }
+
+        .features > div {
+            background: #F0F8FF;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 30pt;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 45pt;
+        }
+
+        @media (min-width:768px) {
+            .columns {
+                display: grid;
+                grid-auto-rows: 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1>VoiceFixer 2</h1>
-        <h2>An extensive toolkit for general speech restoration</h2>
+        <h2>An toolkit for general speech restoration</h2>
         <p>Install the open-sourced package for free:</p>
         <div>
             <p class="install" onclick="selectI()">
@@ -98,11 +179,45 @@
         <a href="https://github.com/voicefixer/voicefixer" class="button" target="_blank">Source</a>
     </div>
     <div class="main">
-        <h1>VoiceFixer 2</h1>
+        <h1 class="title">Features</h1>
+        <div class="features columns">
+            <div>
+                <h1>GPU-accelerated</h1>
+                <p>VoiceFixer 2 supports a wide range of GPUs, from Apple Silicon computers to Nvidia and AMD GPUs. This allows the VoiceFixer 2 to run more quickly and efficiently!</p>
+            </div>
+            <div>
+                <h1>Offline</h1>
+                <p>VoiceFixer 2 runs offline. Internet is only required to download the restoration model. This means you can enhance audio files on-the-go, without needing to connect to the internet!</p>
+            </div>
+            <div>
+                <h1>Single Model</h1>
+                <p>Traditionally, GSR (General Speech Restoration) tools have utilized multiple AI models. VoiceFixer and VoiceFixer 2 only use one single model to handle all restoration tasks. This makes it more efficient, faster, and easier to use!</p>
+            </div>
+        </div>
     </div>
     <div class="samples">
-        <h1>Samples</h1>
-        <p>Samples of VoiceFixer 2 are coming soon. For now, please see the original <a href="https://haoheliu.github.io/demopage-voicefixer/" target="_blank">VoiceFixer demo page</a>.</p>
+        <h1 class="title">Samples</h1>
+        <div class="columns">
+            <div class="samplebox">
+                <p>Before</p>
+                <audio src="resources/001.mp3" controls></audio>
+                <p>After</p>
+                <audio src="resources/001_fixed.mp3" controls></audio>
+            </div>
+            <div class="samplebox">
+                <p>Before</p>
+                <audio src="resources/002.mp3" controls></audio>
+                <p>After</p>
+                <audio src="resources/002_fixed.mp3" controls></audio>
+            </div>
+            <div class="samplebox">
+                <p>Before</p>
+                <audio src="resources/003.mp3" controls></audio>
+                <p>After</p>
+                <audio src="resources/003_fixed.mp3" controls></audio>
+            </div>
+        </div>
+        <p>More samples can be found on the original <a href="https://haoheliu.github.io/demopage-voicefixer/" target="_blank">VoiceFixer demo page</a>.</p>
     </div>
     <div class="faqs">
         <h1>FAQs</h1>
@@ -110,10 +225,24 @@
         <p>VoiceFixer is a general speech restoration toolkit. VoiceFixer uses AI to remove background noise, fix degraded speech, enhance audio quality from old recordings, upscale audio resolution, and more, all in one model!</p>
         <h2>How is VoiceFixer 2 different from VoiceFixer?</h2>
         <p>VoiceFixer was semi-abandoned several years ago. VoiceFixer 2 takes VoiceFixer to the next level, with Apple Silicon GPU acceleration support. You can visit the original VoiceFixer's website <a href="https://github.com/haoheliu/voicefixer" target="_blank">here</a>.</p>
-        <h2>Is VoiceFixer 2 affiliated with VoiceFixer?</h2>
-        <p>No, VoiceFixer 2 is not affiliated with the original creator of VoiceFixer, Haohe Liu.</p>
+        <h2>Is VoiceFixer 2 affiliated with the original VoiceFixer?</h2>
+        <p>No, VoiceFixer 2 is not affiliated with the original creator of VoiceFixer, Haohe Liu. It has been independently forked and improved. We are actively reviewing the code to improve quality and remove direct file links.</p>
+        <h2>Who is behind VoiceFixer 2?</h2>
+        <p>VoiceFixer 2 is maintained by <a href="https://www.mrfake.name/" target="_blank">mrfakename</a> and sponsored by <a href="https://github.com/NeuralVox" target="_blank">NeuralVox</a>.</p>
         <h2>Does VoiceFixer support GPUs?</h2>
         <p>Yes, VoiceFixer supports GPUs. We support Apple Silicon devices as well as Nvidia GPUs and AMD GPUs using MPS, CUDA, and ROCm respectively.</p>
+        <h2>Does VoiceFixer support music?</h2>
+        <p>No, VoiceFixer 2 is currently speech-only. It will try to filter out background noise and music from speech.</p>
+        <h2>Does VoiceFixer 2 support longer audio?</h2>
+        <p>Yes! VoiceFixer 2 is great for longer audio. It splits audio into chunks and processes them individually. The original VoiceFixer package had no progress bar, so one would have no idea how long processing would take. This has been fixed by the VoiceFixer 2 contributors, and we now feature a progress bar with a time estimation for longer audio files.</p>
+        <h2>How can I install VoiceFixer 2?</h2>
+        <p>You can install VoiceFixer 2 from the Python Package Index (PyPI) or directly from the source code repository if you do not trust PyPI or would like to install the latest development version. Check out our documentation for more details, or simply run "pip install voicefixer2."</p>
+        <h2>Is VoiceFixer open-sourced?</h2>
+        <p>Yes! Both VoiceFixer and VoiceFixer 2 are fully open-sourced! VoiceFixer is licensed under the MIT license, while VoiceFixer 2 is licensed under the <a href="https://github.com/voicefixer/voicefixer/blob/main/LICENSE" target="_blank">permissive "copyleft" NOSCL-C-2.0 license</a>!</p>
+        <h2>Can I use VoiceFixer for commercial purposes?</h2>
+        <p>Of course! VoiceFixer 2's license allows for unlimited commercial usage with few restrictions! Please read the license text for more details.</p>
+        <h2>Can I incorporate VoiceFixer 2 into proprietary software?</h2>
+        <p>Yes, you can incorporate VoiceFixer 2 into proprietary software with few restrictions. Please read the license text for details.</p>
     </div>
     <div class="footer">
         <p>Install the free package today, licensed under <a href="https://github.com/voicefixer/voicefixer/blob/main/LICENSE" target="_blank">permissive NOSCL-C-2.0 license</a>!</p>
@@ -123,6 +252,7 @@
             </p>
         </div>
         <p>&copy; 2023 mrfakename. All rights reserved.</p>
+        <p><small>All trademarks property of their respective owners. VoiceFixer 2 is not affiliated with Apple, Nvidia, AMD, or Haohe Liu and is not affiliated with packages of similar names.</small></p>
         <p><small>This website is licensed under CC-BY-NC-ND 4.0 International. This means that using this website for your project is strictly prohibited. In addition, basing your project's website or copying this code in any way or in any extent is strictly prohibited.</small></p>
     </div>
     <script>
@@ -142,4 +272,5 @@
         }
     </script>
 </body>
+
 </html>
